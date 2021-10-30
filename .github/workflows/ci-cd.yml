@@ -44,7 +44,7 @@ jobs:
           projectId: quality-dashboard-produc-61096
 
   deploy_to_staging:
-    if: github.ref == 'refs/heads/stagin'
+    if: github.ref == 'refs/heads/staging'
     needs: test_and_build
     runs-on: ubuntu-latest
     steps:
