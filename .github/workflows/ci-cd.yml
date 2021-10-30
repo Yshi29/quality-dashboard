@@ -2,6 +2,7 @@ name: Continuous Integration and Delivery
 on:
   push:
     branches: [main]
+
 jobs:
   test_and_build:
     runs-on: ubuntu-latest
@@ -19,6 +20,7 @@ jobs:
           name: build
           path: build
           retention-days: 1
+
   deploy_to_production:
     if: github.ref == 'refs/heads/main'
     needs: test_and_build
