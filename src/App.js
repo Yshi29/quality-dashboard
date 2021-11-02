@@ -1,26 +1,27 @@
 import React from "react";
+import Navigation from "./components/Navigation";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import routers from "./routes";
+import { useStyles } from "./styles";
 
 const App = () => {
+  const classes = useStyles();
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        fontFamily: "roboto",
-      }}
-    >
-      <h1
-        style={{
-          color: "#6ec177",
-          margin: 0,
-        }}
-      >
-        Wah Gwan, Soon Coming
-      </h1>
-      <p>What's up, Coming soon</p>
+    <div classes={classes.appRoot}>
+      <Router>
+        <Navigation />
+        <div>
+          <Switch>
+            {routers.map((route, index) => {
+              return (
+                <Route exact key={index} path={route.path}>
+                  {route.component}
+                </Route>
+              );
+            })}
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 };
