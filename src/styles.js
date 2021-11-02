@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "50%",
     cursor: "pointer",
   },
-  navigationLogoCenter: {
+  navigationLogoContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -24,17 +24,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   navigationDrawerCollapse: {
     width: theme.spacing(9),
-  },
-  menuItemIcon: {
-    width: "100%",
-  },
-  menuItem: {
-    width: "80%",
-    borderRadius: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
-  menuItemActive: {
-    backgroundColor: "#EBEBEC",
   },
   navigationList: {
     display: "flex",
@@ -55,5 +44,16 @@ export const useStyles = makeStyles((theme) => ({
   navigationToolBarCollapse: {
     justifyContent: "center",
     paddingRight: 0,
+  },
+  menuItemIcon: {
+    width: "100%",
+  },
+  menuItem: {
+    width: "80%",
+    borderRadius: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
+  menuItemActive: {
+    backgroundColor: "#EBEBEC",
   },
 }));

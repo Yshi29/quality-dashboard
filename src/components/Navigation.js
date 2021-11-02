@@ -10,8 +10,8 @@ import Logo1 from "../assets/logo1.svg";
 import Logo2 from "../assets/logo2.svg";
 
 // @material-ui
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -27,7 +27,6 @@ const Navigation = () => {
   return (
     <div>
       <Drawer
-        className="d"
         classes={{
           paper: clsx(
             classes.navigationDrawer,
@@ -48,7 +47,7 @@ const Navigation = () => {
           </IconButton>
         </div>
 
-        <div className={classes.navigationLogoCenter}>
+        <div className={classes.navigationLogoContainer}>
           <img
             className={classes.navigationLogo}
             src={open ? Logo1 : Logo2}
