@@ -27,6 +27,7 @@ const Navigation = () => {
   return (
     <div>
       <Drawer
+        className="d"
         classes={{
           paper: clsx(
             classes.navigationDrawer,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // @material-ui
 import Icon from "@material-ui/core/Icon";
@@ -11,11 +11,20 @@ import { useStyles } from "../styles";
 
 // external
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const MenuItem = ({ label, icon, activeIcon, path }) => {
   const classes = useStyles();
-  const [active, setActive] = React.useState(true);
+  const [active, setActive] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (path === "/sign-out") {
+      setActive(true);
+      return;
+    }
+    setActive(location.pathname === path);
+  }, [location]);
 
   return (
     <ListItem
