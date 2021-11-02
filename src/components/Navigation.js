@@ -1,5 +1,20 @@
 import React from "react";
 
+// @material-ui
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import IconButton from "@material-ui/core/IconButton";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import MenuIcon from "@mui/icons-material/Menu";
+import clsx from "clsx";
+import {
+  useTheme,
+  useMediaQuery,
+  AppBar,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
+
 // internal
 import MenuItem from "./MenuItem";
 import { useStyles } from "../styles";
@@ -9,23 +24,39 @@ import routes from "../routes";
 import Logo1 from "../assets/logo1.svg";
 import Logo2 from "../assets/logo2.svg";
 
-// @material-ui
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import IconButton from "@material-ui/core/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import MenuIcon from "@mui/icons-material/Menu";
-import clsx from "clsx";
-
 const Navigation = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
   const toggleNavigation = () => {
     setOpen(!open);
   };
+
+  const closeNavigation = () => {
+    if (matches) {
+      setOpen(false);
+    }
+  };
+
   return (
     <div>
+      <AppBar className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            onClick={toggleNavigation}
+            edge="start"
+            color="inherit"
+            aria-label="Menu"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography color="inherit" component="h1" variant="h6">
+            Quality
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Drawer
         classes={{
           paper: clsx(
@@ -33,7 +64,7 @@ const Navigation = () => {
             !open && classes.navigationDrawerCollapse
           ),
         }}
-        variant="permanent"
+        variant={matches ? "temporary" : "permanent"}
         open={open}
       >
         <div
@@ -47,7 +78,7 @@ const Navigation = () => {
           </IconButton>
         </div>
 
-        <div className={classes.navigationLogoCenter}>
+        <div className={classes.navigationLogoContainer}>
           <img
             className={classes.navigationLogo}
             src={open ? Logo1 : Logo2}
@@ -66,6 +97,7 @@ const Navigation = () => {
                   icon={route.icon}
                   activeIcon={route.activeIcon}
                   path={route.path}
+                  onClick={closeNavigation}
                 />
               </React.Fragment>
             );
