@@ -98,6 +98,7 @@ const Navigation = () => {
                   activeIcon={route.activeIcon}
                   path={route.path}
                   onClick={closeNavigation}
+                  key={index}
                 />
               </React.Fragment>
             );
